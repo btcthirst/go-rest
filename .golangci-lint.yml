@@ -1,0 +1,44 @@
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - dupl
+    - errcheck
+    - gocritic
+    - gocognit
+    - gosimple
+    - govet
+    - lll
+    - prealloc
+    - staticcheck
+    - structcheck
+    - typecheck
+    - varcheck
+    - unconvert
+    - unparam
+    - unused
+    - gocyclo
+
+linters-settings:
+  gocognit:
+    min-complexity: 15
+  lll:
+    line-length: 180
+
+issues:
+  exclude-use-default: false
+  exclude:
+    - Error return value of .((c\.)(Error|(Abort|ShouldBind).*?)). is not checked
+  exclude-rules:
+    # Exclude some linters on test files
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+        - gocognit
+        - lll
+    - linters:
+      - goerr113
+      text: "err113"
